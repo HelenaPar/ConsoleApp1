@@ -6,7 +6,7 @@ namespace ConsoleApp1.Command
 {
     public class Command
     {
-        private string[] param;
+        protected string[] param;
         protected Repository repository;
         public Command(Repository repository, string[] param)
         {
@@ -16,7 +16,7 @@ namespace ConsoleApp1.Command
 
         public virtual string Execute()
         {
-            return "nothing";
+            return "Введена неизвестная команда!";
         }
     }
 }

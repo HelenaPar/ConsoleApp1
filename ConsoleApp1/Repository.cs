@@ -1,68 +1,99 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Linq;
 
 namespace ConsoleApp1
 {
     public class Repository
     {
-        public Student[] students = new Student[10];
-        private int id;
+        private Student[] students = new Student[10];
+        private int id = 1;
         Student student;
-
-        public void Add(int id, Student student)
+        public int Add(Student student)
         {
-            //List<Student> temp = students.ToList();
-            //temp.Add(student);
-            //students = temp.ToArray();
-            id = student.id;
-            students[id] = student;
-            id++;
-
-            if (id == students.Length)
+            bool a;
+            for(int i = 0; i < students.Length; i++)
             {
-                Console.WriteLine("Max number of students = 10!");
-            }
-        }
-        public void EditAll(int id1, string name, string surname, string gender, int age)
-        {
-            for (; id1 < students.Length; id1++)
-            {
-                if (id1 == id)
+                if(students[i] == null)
                 {
-                    Student find = students[id1];
-                    find.NewAll(name, surname, gender, age);
+                    student.id = id;
+                   
+                    students[id] = student;
+                    return id++;
+                }
+               
+            }
+            return 0;
+        }
+        public bool EditAll(Student student)
+        {
+            bool a;
+            for (int i = 0; i < students.Length; i++)
+            {
+                if (student.id == students[i]?.id)
+                {
+                    students[i].NewAll(student);
+                    return a = true;
                 }
             }
-            
+            return a = false;
         }
-        public void GetId(int id1)
+        public Student GetId(int id)
         {
-            //List<Student> temp = students.ToList();
-            //Student finded = temp.Find(temp => temp.id == id);
-            //finded.Print();
-            foreach (var item in students)
-                if (id1 == item.id)
+            for (int i = 0; i < students.Length; i++)
+            {
+                if (id == students[i]?.id)
                 {
-                    Student find = students[id1];
-                    find.Print();
+                    return students[i];
                 }
+            }
+            return null;
         }
         
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            List<Student> temp = students.ToList();
-            temp.RemoveAt(id);
-            students = temp.ToArray();
+            bool a;
+            for (int i = 0; i < students.Length; i++)
+            {
+                if(id == students[id]?.id)
+                {
+                    students[id] = null;
+                    return a = true;
+                }
+            }
+            return a = false;
         }
 
-        public void List()
+        public Student[] Find(string substring)
         {
-            foreach(var item in students)
+            Student[] mass = new Student[students.Length];
+            int k = 0;
+            for (int i = 0; i < students.Length; i++)
             {
-                item.Print();
+                if(students[i]?.name.Contains(substring, StringComparison.OrdinalIgnoreCase) == true ||
+                    students[i]?.surname.Contains(substring, StringComparison.OrdinalIgnoreCase) == true)
+                {
+                    mass[k++] = students[i];
+                }
             }
+            Array.Resize(ref mass, k);
+            return mass;
+        }
+
+        public Student[] List() 
+        {
+            Student[] mass = new Student[students.Length];
+            int k = 0;
+            for (int i = 0; i < students.Length; i++)
+            {
+                if (students[i] != null)
+                {
+                    mass[k++] = students[i];
+                }
+            }
+            Array.Resize(ref mass, k);
+            return mass;
+
         }
     }
 }

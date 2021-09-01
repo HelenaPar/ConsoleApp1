@@ -8,14 +8,13 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            Repository repository = new Repository();
             while (true)
             {
-                Repository repository = new Repository();
                 string input = Console.ReadLine();
                 var parser = new CommandParser(repository);
                 var command = parser.Parse(input);
                 var result = command.Execute();
-
                 Console.WriteLine(result);
             }
         }

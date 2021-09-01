@@ -8,11 +8,20 @@ namespace ConsoleApp1.Command
     {
         public EditCommand(Repository repository, string[] param) : base(repository, param)
         {
-            repository.EditAll(Convert.ToInt32(param[0]), param[1], param[2], param[3], Convert.ToInt32(param[4]));
+            
         }
         public override string Execute()
         {
-            return "Запись успешно изменена!";
+           Student student = new Student(Convert.ToInt32(param[0]), param[1], param[2], param[3], Convert.ToInt32(param[4]));
+           bool a = repository.EditAll(student);
+           switch(a)
+            {
+                case true:
+                    return "Запись успешно изменена!";
+                case false:
+                    return "Запись не изменена!";
+            }
+           
         }
     }
 }

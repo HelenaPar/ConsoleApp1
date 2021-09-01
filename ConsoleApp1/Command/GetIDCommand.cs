@@ -4,16 +4,16 @@ using System.Text;
 
 namespace ConsoleApp1.Command
 {
-    class GetIDCommand : Command
+    class GetCommand : Command
     {
-        
-        public GetIDCommand(Repository repository, string[] param) : base(repository, param)
+        public GetCommand(Repository repository, string[] param) : base(repository, param)
         {
-            repository.GetId(Convert.ToInt32(param[0]));
+            
         }
         public override string Execute()
         {
-            return "Найдена запись...";
+            Student student = repository.GetId(Convert.ToInt32(this.param[0]));
+            return student.ToString();
         }
     }
 }

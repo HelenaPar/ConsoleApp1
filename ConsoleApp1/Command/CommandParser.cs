@@ -33,9 +33,15 @@ namespace ConsoleApp1.Command
                 case "EDIT":
                     return new EditCommand(repository, param);
                 case "GET":
-                    return new GetIDCommand(repository, param);
+                    return new GetCommand(repository, param);
                 case "DELETE":
-                    return new DeleteIdCommand(repository, param);
+                    return new DeleteCommand(repository, param);
+                case "LIST":
+                    return new ListCommand(repository, param);
+                case "RAND":
+                    return new RandCommand(repository, param);
+                case "FIND":
+                    return new FindCommand(repository, param);
                 default:
                     return new Command(repository, param);
 

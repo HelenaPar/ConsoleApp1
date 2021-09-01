@@ -4,15 +4,23 @@ using System.Text;
 
 namespace ConsoleApp1.Command
 {
-    class DeleteIdCommand : Command
+    class DeleteCommand : Command
     {
-        public DeleteIdCommand(Repository repository, string[] param) : base(repository, param)
+        public DeleteCommand(Repository repository, string[] param) : base(repository, param)
         {
-            repository.Delete(Convert.ToInt32(param[0]));
+            
         }
         public override string Execute()
         {
-            return "Запись успешно удалена!";
+            bool a = repository.Delete(Convert.ToInt32(this.param[0]));
+            switch (a)
+            {
+                case true:
+                    return "Запись успешно удалена";
+                case false:
+                    return "Запись не удалена!";
+            }
+            
         }
     }
 }
