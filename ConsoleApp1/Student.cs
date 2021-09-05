@@ -30,7 +30,7 @@ namespace ConsoleApp1
 
         public override string ToString()
         {
-            return this.id + " " + this.name + " " + this.surname + " " + this.gender + " " + this.age;
+            return $"{id} {name} {surname} {gender} {age}";
         }
     }
 }
