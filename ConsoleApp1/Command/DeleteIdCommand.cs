@@ -12,15 +12,8 @@ namespace ConsoleApp1.Command
         }
         public override string Execute()
         {
-            bool a = repository.Delete(Convert.ToInt32(this.param[0]));
-            switch (a)
-            {
-                case true:
-                    return "Запись успешно удалена";
-                case false:
-                    return "Запись не удалена!";
-            }
-            
+            bool result = repository.Delete(Convert.ToInt32(this.param[0]));
+            return result == true ? "Запись успешно удалена!" : "Запись не удалена!";
         }
     }
 }
