@@ -6,7 +6,6 @@ namespace ConsoleApp1.Command
 {
     class ListCommand : Command
     {
-        //Student student;
         public ListCommand(Repository repository, string[] parametrs) : base(repository, parametrs)
         {
 
