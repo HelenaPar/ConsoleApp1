@@ -8,23 +8,14 @@ namespace ConsoleApp1.Command
     {
         public AddCommand(Repository repository, string[] parametrs) : base(repository, parametrs)
         {
-           // student = new Student(Convert.ToInt32(parametrs[0]), parametrs[1], parametrs[2], parametrs[3], Convert.ToInt32(parametrs[4]));
-           // repository.Add(Convert.ToInt32(parametrs[0]), student);
-            //repository.List();
+          
         }
 
         public override string Execute()
         {
             Student student = new Student(Convert.ToInt32(this.param[0]), this.param[1], this.param[2], this.param[3], Convert.ToInt32(this.param[4]));
-            int i = repository.Add(student);
-
-            switch (i)
-            {
-                case 0:
-                    return "Запись не добавлена!";
-                default:
-                    return "Запись успешно добавлена!";
-            }
+            int result = repository.Add(student);
+            return result == 0 ? "Запись не добавлена!" : "Запись успешно добавлена!";
         }
         
     }
