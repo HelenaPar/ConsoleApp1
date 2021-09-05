@@ -26,7 +26,7 @@ namespace ConsoleApp1.Command
                     index++;
                 }
             }
-            switch(inputArr[0].ToUpper())//param[0].ToUpper()
+            switch(inputArr[0].ToUpper())
             {
                 case "ADD":
                     return new AddCommand(repository, param);
@@ -43,7 +43,7 @@ namespace ConsoleApp1.Command
                 case "FIND":
                     return new FindCommand(repository, param);
                 default:
-                    return new Command(repository, param);
+                    return new UnknownCommand(repository, parameters);
 
             }
         }
