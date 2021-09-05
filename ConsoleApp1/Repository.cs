@@ -9,35 +9,34 @@ namespace ConsoleApp1
         private Student[] students = new Student[10];
         private int id = 1;
         Student student;
+        
         public int Add(Student student)
         {
-            bool a;
             for(int i = 0; i < students.Length; i++)
             {
                 if(students[i] == null)
                 {
                     student.id = id;
-                   
                     students[id] = student;
                     return id++;
                 }
-               
             }
             return 0;
         }
+        
         public bool EditAll(Student student)
         {
-            bool a;
             for (int i = 0; i < students.Length; i++)
             {
                 if (student.id == students[i]?.id)
                 {
                     students[i].NewAll(student);
-                    return a = true;
+                    return true;
                 }
             }
-            return a = false;
+            return false;
         }
+        
         public Student GetId(int id)
         {
             for (int i = 0; i < students.Length; i++)
@@ -52,16 +51,15 @@ namespace ConsoleApp1
         
         public bool Delete(int id)
         {
-            bool a;
             for (int i = 0; i < students.Length; i++)
             {
                 if(id == students[id]?.id)
                 {
                     students[id] = null;
-                    return a = true;
+                    return true;
                 }
             }
-            return a = false;
+            return false;
         }
 
         public Student[] Find(string substring)
@@ -93,7 +91,6 @@ namespace ConsoleApp1
             }
             Array.Resize(ref mass, k);
             return mass;
-
         }
     }
 }
