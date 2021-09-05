@@ -14,9 +14,6 @@ namespace ConsoleApp1.Command
             this.repository = repository;
         }
 
-        public virtual string Execute()
-        {
-            return "Введена неизвестная команда!";
-        }
+        public abstract string Execute();
     }
 }
