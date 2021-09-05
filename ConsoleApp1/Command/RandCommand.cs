@@ -16,11 +16,7 @@ namespace ConsoleApp1.Command
             Student[] student = repository.List();
             Random rnd = new Random();
             int value = rnd.Next(0, student.Length);
-            for (int i = 0; i < student.Length; i++)
-            {
-                stud = student[value];
-            }
-            return stud.ToString();
+            return student[value].ToString();
         }
     }
 }
